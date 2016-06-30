@@ -15,7 +15,7 @@
 ![Alt text](/readmestuff/word_query.png?raw=true "word prompt mockup")
 
 - this could hit googles list API to fill in other related words
--   green button would this 
+--  green button would this 
 - ask user to pick a puzzle layout, something like: http://www.onlinecrosswords.net/layout-730.png
 -   in progress
 - 'go' button
