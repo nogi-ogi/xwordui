@@ -14,9 +14,11 @@
 - this could hit googles list API to fill in other related words
 - ask user to pick a puzzle layout, something like: http://www.onlinecrosswords.net/layout-730.png
 - 'go' button
-- some display of the algorithm's progress as words are added
+- some display of the algorithm's progress as words are added4
+
 2) Word placement algorithm
 - port the javascript to java/swift
+
 3) Adding clues
 - once words are placed, call the API to get clues for each word
 - randomly pick a clue for each word
