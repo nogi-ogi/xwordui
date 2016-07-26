@@ -11,10 +11,17 @@
 1) UI
 - open with a menu that shows some options and a 'make puzzle' button
 - make puzzle promps the user to enter some words
+
+![Alt text](/readmestuff/word_query.png?raw=true "word prompt mockup")
+
 - this could hit googles list API to fill in other related words
+
+        green button would this 
 - ask user to pick a puzzle layout, something like: http://www.onlinecrosswords.net/layout-730.png
+    
+        in progress
 - 'go' button
-- some display of the algorithm's progress as words are added4
+- some display of the algorithm's progress as words are added
 
 2) Word placement algorithm
 - port the javascript to java/swift
