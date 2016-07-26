@@ -35,7 +35,7 @@ export default class WordStore {
   
   delete(id) {
     this.setState({
-      words: this.puzzles.filter(word => word.id !== id)
+      puzzles: this.puzzles.filter(word => word.id !== id)
     });
   }
 }
