@@ -1,24 +1,13 @@
 import React from 'react';
 import Puzzles from './Puzzles';
 import uuid from 'uuid';
+import connect from '../libs/connect';
+import WordActions from '../actions/WordActions';
 
-export default class App extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-  			puzzles: [
-    			{ id: uuid.v4(), d:'', n:'', x:'', y:'', a:"REPEATS", c:'' },
-    			{ id: uuid.v4(), d:'', n:'', x:'', y:'', a:"NINES", c:'' },
-    			{ id: uuid.v4(), d:'', n:'', x:'', y:'', a:"DIAL", c:'' },
-    			{ id: uuid.v4(), d:'', n:'', x:'', y:'', a:"ASTRONOMER", c:'' },
-    			{ id: uuid.v4(), d:'', n:'', x:'', y:'', a:"WEIGHING", c:''}
-        ]
-  		};
-  	}
-
+class App extends React.Component {
   	render() {
-  		const {puzzles} = this.state;
+      const {puzzles} = this.props;
+      console.log(this.props);
 
   		return (
   			<div>
@@ -35,44 +24,30 @@ export default class App extends React.Component {
   	}
 
   	addPuzzle = () => {
-  		this.setState({
-  			puzzles: this.state.puzzles.concat([{
-  				id: uuid.v4(),
-  				a: "new word"
-  			}])
+  		this.props.WordActions.create({
+  			id: uuid.v4(),
+  			a: "new word"
   		});
   	}
 
   	deletePuzzle = (id, e) => {
   		e.stopPropagation();
 
-  		this.setState({
-  			puzzles: this.state.puzzles.filter(puzzle => puzzle.id !== id)
-  		});
+  		this.props.WordActions.delete(id);
   	}
 
     activatePuzzleEdit = (id) => {
-      this.setState({
-        puzzles: this.state.puzzles.map(puzzle => {
-          if(puzzle.id === id){
-            puzzle.editing = true;
-          }
-
-          return puzzle;
-        })
-      })
+      this.props.WordActions.update({id, editing: true});
     }
 
     editPuzzle = (id,a) => {
-      this.setState({
-        puzzles: this.state.puzzles.map(puzzle => {
-          if(puzzle.id === id){
-            puzzle.editing = false;
-            puzzle.a = a;
-          }
-
-          return puzzle;
-        })
-      })
+      const {WordActions} = this.props;
+      WordActions.update({id, a, editing: false});
     }
 }
+
+export default connect(({puzzles}) => ({
+  puzzles
+}), {
+  WordActions
+})(App)
